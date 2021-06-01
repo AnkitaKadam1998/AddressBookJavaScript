@@ -1,15 +1,20 @@
-class EmployeePayRollUc11
+class EmployeePayRollUc12
+// property
 {
-//property
 id;
 salary;
+gender;
+startDate;
 
 //constructor
-constructor(id,name,salary)
+
+constructor(...parans)
 {
-this.id=id;
-this.name=name;
-this.salary=salary;
+        this.id = parans[0];
+        this.name=parans[1];
+        this.salary=parans[2];
+        this.gender=parans[3];
+        this.startDate=parans[4];
 }
 
 //getter and setter method
@@ -25,10 +30,18 @@ this._name=name;
 //method
 toString()
 {
-return "id="+this.id+",name='"+this.name+",salary="+this.salary;
+        const options={year:'numeric',month:'long',day:'numeric'};
+        const empDate=this.startDate ===undefined ? "undefined":
+                                          this.startDate.toLocaleDateString("en-US",options);
+        return "id=" +this.id + ",name='"+this.name+",salary='"+this.salary +","+
+                                "gender="+this.gender+",startDate=" +empDate;
 }
 }
-let employeePayRollUc11 = new EmployeePayRollUc11(1,"Ankita",30000);
-console.log(employeePayRollUc11.toString());
-employeePayRollUc11.name="Ankita";
-console.log(employeePayRollUc11.toString());
+
+let employeePayRollUc12 = new EmployeePayRollUc12(1,"Sanket",33000);
+console.log(employeePayRollUc12.toString());
+employeePayRollUc12.name="manish";
+console.log(employeePayRollUc12.toString());
+let newEmployeePayRollUc12=new EmployeePayRollUc12(1,"Ankita",30000,"F",new Date());
+console.log(newEmployeePayRollUc12.toString());
+
